@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "865754341823",
+    "project_id": "productify-life",
+    "storage_bucket": "productify-life.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865754341823:android:0b4430d458470ba880c10a",
+        "android_client_info": {
+          "package_name": "com.miniproject.productifylife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865754341823-u36hpkmflomuc3kf47vba8gskcqn3qei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miniproject.productifylife",
+            "certificate_hash": "7694d48223513d692db8c0f4ce3a9c55d9500896"
+          }
+        },
+        {
+          "client_id": "865754341823-1pqr9mtnsmoaf34phfd5vdiniveakebq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnfsHM-uIGKruyI_SaL09jRnACPkvMWVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865754341823-1pqr9mtnsmoaf34phfd5vdiniveakebq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
