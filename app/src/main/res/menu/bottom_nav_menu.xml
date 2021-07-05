@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:id="@+id/regular"
-        android:title="Regular"
-        android:icon="@drawable/person_foreground"/>
+        android:id="@+id/routine"
+        android:icon="@drawable/ic_routine"
+        android:title="@string/routine" />
     <item
-        android:id="@+id/today"
-        android:title="Today"
-        android:icon="@drawable/person_foreground"/>
+        android:id="@+id/todo"
+        android:title="@string/todo"
+        android:icon="@drawable/ic_todo"/>
 
     <item
         android:id="@+id/rewards"
-        android:title="Rewards"
-        android:icon="@drawable/person_foreground"/>
+        android:title="@string/rewards"
+        android:icon="@drawable/ic_coin"/>
 
     <item
         android:id="@+id/settings"
-        android:title="Settings"
-        android:icon="@drawable/person_foreground"/>
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings"/>
 
 
 </menu>

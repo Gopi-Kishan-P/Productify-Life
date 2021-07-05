@@ -3,11 +3,13 @@ package com.miniproject.productifylife;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,44 +19,39 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
 
-        Fragment firstFragment= new RegularFragment();
-        Fragment secondFragment=new todayFragment();
+        Fragment firstFragment= new RoutineFragment();
+        Fragment secondFragment=new TodoFragment();
         Fragment thirdFragment=new RewardsFragment();
         Fragment settingsFragment=new SettingsFragment();
-getSupportFragmentManager().beginTransaction().add(R.id.flFragment, firstFragment, null).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.flFragment, firstFragment, null).commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.regular:
+                    case R.id.routine:
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
                                 .replace(R.id.flFragment, firstFragment, null)
                                 .commit();
                         break;
-                    case R.id.today:
-
+                    case R.id.todo:
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
                                 .replace(R.id.flFragment, secondFragment, null)
                                 .commit();  break;
                     case R.id.rewards:
-
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
                                 .replace(R.id.flFragment, thirdFragment, null)
                                 .commit();
-                        Toast.makeText(MainActivity.this, "Rewards", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.settings:
-
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
                                 .replace(R.id.flFragment, settingsFragment, null)
                                 .commit();
-                        Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;

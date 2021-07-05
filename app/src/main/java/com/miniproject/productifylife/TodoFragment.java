@@ -17,7 +17,7 @@ import com.miniproject.productifylife.placeholder.PlaceholderContent;
 /**
  * A fragment representing a list of Items.
  */
-public class todayFragment extends Fragment {
+public class TodoFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -28,13 +28,13 @@ public class todayFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public todayFragment() {
+    public TodoFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static todayFragment newInstance(int columnCount) {
-        todayFragment fragment = new todayFragment();
+    public static TodoFragment newInstance(int columnCount) {
+        TodoFragment fragment = new TodoFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -53,7 +53,7 @@ public class todayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_today_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_todo_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
