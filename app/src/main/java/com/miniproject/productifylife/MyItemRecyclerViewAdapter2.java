@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.miniproject.productifylife.placeholder.PlaceholderContent.PlaceholderItem;
-import com.miniproject.productifylife.databinding.FragmentTodayBinding;
+import com.miniproject.productifylife.databinding.FragmentTodoBinding;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class MyItemRecyclerViewAdapter2 extends RecyclerView.Adapter<MyItemRecyc
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        return new ViewHolder(FragmentTodayBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+        return new ViewHolder(FragmentTodoBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
 
     }
 
@@ -48,7 +48,7 @@ public class MyItemRecyclerViewAdapter2 extends RecyclerView.Adapter<MyItemRecyc
         public final TextView mContentView;
         public PlaceholderItem mItem;
 
-        public ViewHolder(FragmentTodayBinding binding) {
+        public ViewHolder(FragmentTodoBinding binding) {
             super(binding.getRoot());
             mIdView = binding.itemNumber;
             mContentView = binding.content;
