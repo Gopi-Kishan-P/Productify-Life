@@ -16,6 +16,10 @@
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
     </style>
+    <style name="Theme.splashscrenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/app_icon</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
 
 <!--    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">-->
 <!--        <item name="android:textSize">12sp</item>-->
