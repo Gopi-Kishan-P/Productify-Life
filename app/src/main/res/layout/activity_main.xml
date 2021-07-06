@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Theme.ProductifyLife"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -38,8 +39,8 @@
 
             <ImageView
                 android:id="@+id/top_right_coin"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
                 app:layout_constraintBottom_toBottomOf="@+id/imageButton"
@@ -64,8 +65,8 @@
 
             <ImageButton
                 android:id="@+id/imageButton"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -84,6 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        app:itemIconPadding="100dp"
+        app:itemIconSize="26dp"
         app:itemIconTint="@drawable/blue_bottom_nav"
         app:itemRippleColor="@color/blue_50"
         app:itemTextColor="@drawable/blue_bottom_nav"
@@ -92,11 +95,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:itemIconSize="26dp"
-        app:itemIconPadding="100dp"
         app:menu="@menu/bottom_nav_menu" />
-<!--        app:itemTextAppearanceActive="@style/BottomNavigationView.Active"-->
-<!--        app:itemTextAppearanceInactive="@style/BottomNavigationView"-->
+    <!--        app:itemTextAppearanceActive="@style/BottomNavigationView.Active"-->
+    <!--        app:itemTextAppearanceInactive="@style/BottomNavigationView"-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -106,12 +107,11 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/settings"
         android:src="@drawable/ic_add"
-        app:elevation="1dp"
-        app:tint="@android:color/white"
         app:backgroundTint="@color/blue_500"
+        app:elevation="1dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:tint="@android:color/white" />
 
     <FrameLayout
         android:id="@+id/flFragment"
@@ -120,7 +120,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myAppBar"></FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/myAppBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
