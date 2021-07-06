@@ -11,14 +11,18 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    Toolbar appToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        appToolbar = findViewById(R.id.appToolbar);
+        setSupportActionBar(appToolbar);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
 
         Fragment firstFragment= new RoutineFragment();
