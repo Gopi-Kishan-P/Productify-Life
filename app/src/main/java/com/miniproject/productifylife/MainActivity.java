@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_ProductifyLife);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
-
         Fragment firstFragment= new RoutineFragment();
         Fragment secondFragment=new TodoFragment();
         Fragment thirdFragment=new RewardsFragment();
