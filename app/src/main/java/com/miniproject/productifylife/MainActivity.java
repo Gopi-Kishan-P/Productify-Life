@@ -24,34 +24,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         appToolbar = findViewById(R.id.appToolbar);
         setSupportActionBar(appToolbar);
+        appToolbar.setTitle(R.string.routine);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
-        Fragment firstFragment= new RoutineFragment();
-        Fragment secondFragment=new TodoFragment();
-        Fragment thirdFragment=new RewardsFragment();
+        Fragment routineFragment= new RoutineFragment();
+        Fragment todoFragment=new TodoFragment();
+        Fragment rewardsFragment=new RewardsFragment();
         Fragment settingsFragment=new SettingsFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.flFragment, firstFragment, null).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.flFragment, routineFragment, null).commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.routine:
+                        appToolbar.setTitle(R.string.routine);
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
-                                .replace(R.id.flFragment, firstFragment, null)
+                                .replace(R.id.flFragment, routineFragment, null)
                                 .commit();
                         break;
                     case R.id.todo:
+                        appToolbar.setTitle(R.string.todo);
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
-                                .replace(R.id.flFragment, secondFragment, null)
+                                .replace(R.id.flFragment, todoFragment, null)
                                 .commit();  break;
                     case R.id.rewards:
+                        appToolbar.setTitle(R.string.rewards);
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
-                                .replace(R.id.flFragment, thirdFragment, null)
+                                .replace(R.id.flFragment, rewardsFragment, null)
                                 .commit();
                         break;
                     case R.id.settings:
+                        appToolbar.setTitle(R.string.settings);
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
                                 .replace(R.id.flFragment, settingsFragment, null)
