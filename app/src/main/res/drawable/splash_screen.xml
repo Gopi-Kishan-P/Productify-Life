@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@color/white"/>
-
-    <item android:drawable="@drawable/ic_appicon"
-        android:gravity="center"/>
+    <item>
+        <bitmap android:src="@drawable/app_icon_foreground" android:gravity="center"/>
+    </item>
 </layer-list>
