@@ -38,40 +38,47 @@
 
             </androidx.appcompat.widget.Toolbar>
 
-            <ImageView
-                android:id="@+id/top_right_coin"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-                app:layout_constraintEnd_toStartOf="@+id/coins_rem"
-                app:layout_constraintTop_toTopOf="@+id/imageButton"
-                app:srcCompat="@drawable/ic_coin_color" />
-
-            <TextView
-                android:id="@+id/coins_rem"
+            <LinearLayout
+                android:id="@+id/coins_rem_layout"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:layout_weight="1"
-                android:text="3"
-                android:textAlignment="center"
-                android:textColor="@color/orange_500"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:background="@drawable/customborder"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/top_right_coin"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_coin_color" />
+
+                <TextView
+                    android:id="@+id/coins_rem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="3"
+                    android:textAlignment="center"
+                    android:textColor="@color/orange_500"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/calendarButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/top_right_coin"
+                app:layout_constraintEnd_toStartOf="@id/coins_rem_layout"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_calendar"
                 app:tint="@color/blue_500" />

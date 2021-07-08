@@ -11,6 +11,8 @@
     <color name="pink_500">#FF00CB</color>
     <color name="green_500">#00D42B</color>
     <color name="orange_500">#FFB300</color>
+    <color name="orange_700">#F99C1B</color>
+    <color name="yellow_500">#FCD630</color>
     <color name="blue_500">#0077FF</color>
     <color name="blue_50">#75B6FF</color>
 </resources>
