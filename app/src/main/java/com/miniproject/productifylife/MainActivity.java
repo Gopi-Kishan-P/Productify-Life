@@ -2,12 +2,17 @@ package com.miniproject.productifylife;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.pm.ShortcutInfoCompat;
+import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,6 +23,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar appToolbar;
@@ -67,6 +75,19 @@ public class MainActivity extends AppCompatActivity {
                         aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             aboutDialog.show();
                             break;
+                    case 2 :
+                            aboutDialog.setContentView(R.layout.dialog_add_todo);
+                        Log.d("TRY", "Case 1");
+                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            aboutDialog.show();
+                            break;
+                    case 3 :
+                            aboutDialog.setContentView(R.layout.dialog_add_reward);
+                        Log.d("TRY", "Case 1");
+                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            aboutDialog.show();
+                            break;
+
                     case 4 :
                         Log.d("TRY", "Case 4");
                             aboutDialog.setContentView(R.layout.dialog_about);
@@ -124,5 +145,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N_MR1) {
+            Intent main = new Intent(this, MainActivity.class);
+            main.setAction(Intent.ACTION_VIEW);
+            Intent cal = new Intent(this, CalendarActivity.class);
+            cal.setAction(Intent.ACTION_VIEW);
+            ShortcutManager sm = getSystemService(ShortcutManager.class);
+            ShortcutInfo shortcut = new ShortcutInfo.Builder(this, "id1")
+                    .setShortLabel("Calendar")
+                    .setLongLabel("Calendar")
+                    .setIcon(Icon.createWithResource(this, R.mipmap.adaptive_calendar_icon))
+                    .setIntents(new Intent[] {
+                            main, cal
+                    })
+                    .build();
+            sm.setDynamicShortcuts(Collections.singletonList(shortcut));
+        }
 }}

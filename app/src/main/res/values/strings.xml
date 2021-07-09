@@ -27,6 +27,7 @@
     <string name="remind_me">Remind Me to Start</string>
     <string name="blank_time">__ : __</string>
     <string name="completion_reward">Completion Reward</string>
+    <string name="coin_spent">Coin Spent</string>
     <string name="create_task">Create Task</string>
     <string name="edit_task">Edit Task</string>
     <string name="cancel_task">Cancel Task</string>

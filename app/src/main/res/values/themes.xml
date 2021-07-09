@@ -30,7 +30,7 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">32dp</item>
     </style>
-    <style name="InputTextStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="InputTextStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="shapeAppearance">@style/InputTextShapeAppearance</item>
         <item name="boxStrokeColor">@color/blue_500</item>
         <item name="boxStrokeWidth">1.5dp</item>
