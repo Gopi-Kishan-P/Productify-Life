@@ -9,12 +9,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
-public class LoginAdapter extends FragmentPagerAdapter {
+public class AuthAdapter extends FragmentPagerAdapter {
 
    private Context mycontext;
    int totalTabs;
 
-    public LoginAdapter(Context context,FragmentManager fm,  int totalTabs) {
+    public AuthAdapter(Context context, FragmentManager fm, int totalTabs) {
         super(fm);
         this.mycontext = context;
         this.totalTabs = totalTabs;
