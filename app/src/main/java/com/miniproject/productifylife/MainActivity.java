@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -59,10 +60,19 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentFragment == 4){
-                    aboutDialog.setContentView(R.layout.dialog_about);
-                    aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    aboutDialog.show();
+                switch (currentFragment){
+                    case 1 :
+                            aboutDialog.setContentView(R.layout.dialog_add_routine);
+                        Log.d("TRY", "Case 1");
+                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            aboutDialog.show();
+                            break;
+                    case 4 :
+                        Log.d("TRY", "Case 4");
+                            aboutDialog.setContentView(R.layout.dialog_about);
+                            aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            aboutDialog.show();
+                            break;
 
                 }
             }
