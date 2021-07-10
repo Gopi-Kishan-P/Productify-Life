@@ -2,7 +2,6 @@ package com.miniproject.productifylife;
 
 import android.content.Context;
 
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -10,9 +9,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import org.jetbrains.annotations.NotNull;
 
 public class AuthAdapter extends FragmentPagerAdapter {
-
-   private Context mycontext;
-   int totalTabs;
+    private Context mycontext;
+    int totalTabs;
 
     public AuthAdapter(Context context, FragmentManager fm, int totalTabs) {
         super(fm);
@@ -23,12 +21,17 @@ public class AuthAdapter extends FragmentPagerAdapter {
     @NotNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 LoginFragment loginFragment = new LoginFragment();
+//                Log.println(Log.WARN,"tag","returning login fragment");
+                System.err.println("return");
                 return loginFragment;
             case 1:
                 SignupFragment signupFragment = new SignupFragment();
+//                Log.println(Log.WARN,"tag","returning login fragment");
+                System.err.println("return");
+
                 return signupFragment;
             default:
                 return null;
@@ -37,6 +40,6 @@ public class AuthAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return totalTabs;
     }
 }

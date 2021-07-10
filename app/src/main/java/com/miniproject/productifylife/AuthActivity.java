@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -17,6 +18,7 @@ public class AuthActivity extends AppCompatActivity {
     ViewPager viewPager;
     CardView google;
     float v=0;
+
 
 
     @Override
@@ -40,13 +42,21 @@ public class AuthActivity extends AppCompatActivity {
 
         final AuthAdapter adapter = new AuthAdapter(this, getSupportFragmentManager(), tablayout.getTabCount());
         viewPager.setAdapter(adapter);
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
 
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                try {
+                    viewPager.setCurrentItem(tab.getPosition());
+                    System.err.println("********************************tab selected");
+                    System.err.println("****************" + viewPager.getCurrentItem());
+                    System.err.println("****************" + tab.getPosition());
+
+                }catch(Exception e){
+                    System.err.println(e);
+                    }
+
             }
 
             @Override
