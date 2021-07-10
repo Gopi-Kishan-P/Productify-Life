@@ -33,7 +33,7 @@
     <string name="cancel_task">Cancel Task</string>
     <string name="delete_task">Delete Task</string>
 
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">AuthActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>

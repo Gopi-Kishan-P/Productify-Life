@@ -3,14 +3,13 @@ package com.miniproject.productifylife;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
-
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class AuthActivity extends AppCompatActivity {
@@ -35,6 +34,16 @@ public class AuthActivity extends AppCompatActivity {
         tablayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
         google = findViewById(R.id.continue_with_google);
+
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AuthActivity.this, GoogleSignInActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
 
         tablayout.addTab(tablayout.newTab().setText("Login"));
         tablayout.addTab(tablayout.newTab().setText("SignUp"));

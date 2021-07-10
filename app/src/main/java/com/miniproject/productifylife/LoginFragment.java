@@ -11,11 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.material.textfield.TextInputLayout;
-
 public class LoginFragment extends Fragment {
 
-    TextInputLayout password, email;
+    EditText password, email;
     Button login;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstancesState) {
@@ -23,7 +21,6 @@ public class LoginFragment extends Fragment {
         email = root.findViewById(R.id.login_email);
         password = root.findViewById(R.id.login_password);
         login = root.findViewById(R.id.login_btn);
-
         return root;
     }
 }
