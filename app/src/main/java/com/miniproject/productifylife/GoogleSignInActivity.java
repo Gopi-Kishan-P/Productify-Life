@@ -92,6 +92,7 @@ public class GoogleSignInActivity extends AuthActivity {
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        if(mAuth!=null)
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -108,6 +109,8 @@ public class GoogleSignInActivity extends AuthActivity {
                         }
                     }
                 });
+        else
+            updateUI(null);
     }
     // [END auth_with_google]
 

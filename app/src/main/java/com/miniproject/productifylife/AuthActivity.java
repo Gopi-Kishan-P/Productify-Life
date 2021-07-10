@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.tabs.TabLayout;
 
 public class AuthActivity extends AppCompatActivity {
@@ -40,6 +42,8 @@ public class AuthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AuthActivity.this, GoogleSignInActivity.class);
                 startActivity(intent);
+
+
 
             }
         });
