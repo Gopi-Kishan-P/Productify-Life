@@ -38,6 +38,7 @@
     <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/white</item>
         <item name="cornerRadius">99dp</item>
+        <item name="backgroundTint">@color/blue_500</item>
     </style>
     <style name="CircularImage" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="cornerFamily">rounded</item>

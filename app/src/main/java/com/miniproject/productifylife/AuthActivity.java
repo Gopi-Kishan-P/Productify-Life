@@ -10,15 +10,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+//import com.google.android.gms.auth.api.signin.GoogleSignIn;
+//import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.tabs.TabLayout;
 
 public class AuthActivity extends AppCompatActivity {
     TabLayout tablayout;
     ViewPager viewPager;
     CardView google;
-    float v=0;
+    float v = 0;
 
 
 
@@ -82,13 +82,5 @@ public class AuthActivity extends AppCompatActivity {
 
             }
         });
-//        google.setTranslationY(300);
-//        tablayout.setTranslationY(300);
-//
-//        google.setAlpha(v);
-//        tablayout.setAlpha(v);
-//
-//        google.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
-//        tablayout.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
     }
 }

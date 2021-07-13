@@ -4,6 +4,8 @@ package com.miniproject.productifylife;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -84,6 +86,7 @@ public class GoogleSignInActivity extends AuthActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
+                Toast.makeText(getBaseContext(), "Google Sign In Failed. Try Again", Toast.LENGTH_LONG).show();
             }
         }
     }
