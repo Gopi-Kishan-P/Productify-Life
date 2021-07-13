@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
+    android:layout_width="320dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@color/white"
@@ -22,7 +22,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/rewards"
             android:textColor="@color/blue_500"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:startIconDrawable="@drawable/ic_coin_24"
-
             app:startIconTint="@color/blue_500">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -57,7 +56,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/coin_spent"
             android:textColor="@color/blue_500"
-            android:textSize="18sp"
+            android:textSize="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email1" />
 

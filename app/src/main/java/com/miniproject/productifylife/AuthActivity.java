@@ -1,6 +1,7 @@
 package com.miniproject.productifylife;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
@@ -24,6 +25,7 @@ public class AuthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
@@ -31,6 +33,7 @@ public class AuthActivity extends AppCompatActivity {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(getResources().getColor(R.color.blue_500, getTheme()));
+//            getWindow().getDecorView().getWindowInsetsController().setSystemBarsAppearance(0, APPEARANCE_LIGHT_STATUS_BARS);
         }
 
         tablayout = findViewById(R.id.tab_layout);
@@ -42,8 +45,6 @@ public class AuthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AuthActivity.this, GoogleSignInActivity.class);
                 startActivity(intent);
-
-
 
             }
         });
