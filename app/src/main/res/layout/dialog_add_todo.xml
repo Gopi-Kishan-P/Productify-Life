@@ -6,8 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@color/white"
-    app:cardCornerRadius="30dp"
-    app:contentPaddingBottom="30dp">
+    app:cardCornerRadius="30dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -117,9 +116,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="8dp"
             android:text="@string/cancel"
-            android:textColor="@color/red_500"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            style="@style/CancelStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
