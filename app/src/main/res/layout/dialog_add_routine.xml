@@ -59,77 +59,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email1" />
 
-        <LinearLayout
-            android:layout_width="80dp"
+        <EditText
+            android:id="@+id/add_routine_edittext"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/orange_custom_border"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView8">
-
-            <TextView
-                android:id="@+id/routine_sub1"
-                android:layout_width="18dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/orange_custom_border"
-                android:backgroundTint="@color/orange_500"
-                android:text="-"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/routine_completion_coin"
-                android:layout_width="18dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="3"
-                android:textAlignment="center"
-                android:textColor="@color/orange_700"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/routine_add1"
-                android:layout_width="18dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/orange_custom_border"
-                android:backgroundTint="@color/orange_500"
-                android:text="+"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/cancel"
-            style="@style/CancelStyle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            android:backgroundTint="@color/orange_500"
+            android:ems="10"
+            android:inputType="number"
+            android:text="3"
+            android:textAlignment="center"
+            android:textColor="@color/orange_700"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/routine_create_task_btn"
             style="@style/ButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:text="@string/create_task"
-            app:layout_constraintBottom_toBottomOf="@+id/textView11"
-            app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
-            app:layout_constraintTop_toTopOf="@+id/textView11" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_routine_edittext" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
