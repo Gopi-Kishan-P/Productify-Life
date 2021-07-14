@@ -117,11 +117,7 @@ public class GoogleSignInActivity extends AuthActivity {
         else
             updateUI(null);
     }
-    // [END auth_with_google]
-
-    // [START signin]
-
-    // [END signin]
+ 
 
     private void updateUI(FirebaseUser user) {
         Intent intent = new Intent(GoogleSignInActivity.this,MainActivity.class);
@@ -131,8 +127,7 @@ public class GoogleSignInActivity extends AuthActivity {
         if(account!=null){
             String personName = account.getDisplayName();
             String personEmail = account.getEmail();
-            Toast.makeText(GoogleSignInActivity.this,personName + personEmail,Toast.LENGTH_LONG).show();
+            Toast.makeText(GoogleSignInActivity.this,"Welcome! "+personName,Toast.LENGTH_LONG).show();
         }
-
     }
 }

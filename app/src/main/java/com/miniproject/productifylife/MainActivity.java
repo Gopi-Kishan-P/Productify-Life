@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     int currentFragment = 1;
     Dialog aboutDialog;
-    ImageButton calendarBtn;
+    ImageButton calendarBtn, logoutBtn;
     
     public static final String pass = "pass";
     
@@ -50,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(appToolbar);
         appToolbar.setTitle(R.string.routine);
 
+        logoutBtn = findViewById(R.id.logoutbutton);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logout = new Intent(MainActivity.this, AuthActivity.class);
+                startActivity(logout);
+                Toast.makeText(MainActivity.this, "Successfully!! Sign out", Toast.LENGTH_SHORT).show();
+            }
+        });
         calendarBtn = findViewById(R.id.calendarButton);
         calendarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
