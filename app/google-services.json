@@ -14,7 +14,23 @@
       },
       "oauth_client": [
         {
-          "client_id": "865754341823-u36hpkmflomuc3kf47vba8gskcqn3qei.apps.googleusercontent.com",
+          "client_id": "865754341823-cb4muceojn315f7679ettgcakqhlpjf2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miniproject.productifylife",
+            "certificate_hash": "1cf4b22ff10b847fb3ac50149acf410774c77bf3"
+          }
+        },
+        {
+          "client_id": "865754341823-cg0tanlncehoqhd3ghfkcg3forh717t0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miniproject.productifylife",
+            "certificate_hash": "cab8cb74ffcbe7f642445f962ac7157d3104ad36"
+          }
+        },
+        {
+          "client_id": "865754341823-lcs2b7t43t64cklo4fkt4m5teoh35hd4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.miniproject.productifylife",
