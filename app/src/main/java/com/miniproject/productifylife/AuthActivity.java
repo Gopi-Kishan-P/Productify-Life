@@ -14,6 +14,7 @@ import android.view.WindowManager;
 //import com.google.android.gms.auth.api.signin.GoogleSignIn;
 //import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.FirebaseApp;
 
 public class AuthActivity extends AppCompatActivity {
     TabLayout tablayout;
@@ -27,6 +28,7 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_auth);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
