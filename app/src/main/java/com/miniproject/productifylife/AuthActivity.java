@@ -47,7 +47,6 @@ public class AuthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AuthActivity.this, GoogleSignInActivity.class);
                 startActivity(intent);
-
             }
         });
 
