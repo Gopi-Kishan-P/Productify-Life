@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CalendarActivity">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/myAppBar"
         android:layout_width="match_parent"
@@ -33,7 +34,66 @@
 
             </androidx.appcompat.widget.Toolbar>
 
+            <ImageButton
+                android:id="@+id/cal_back_btn"
+                android:layout_width="33dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="TODO"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_back"
+                app:tint="@color/blue_500" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myAppBar" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/cal_tablayout"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/viewpage_shape"
+        android:backgroundTint="@color/orange_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:tabIndicatorColor="@color/blue_500"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/blue_500">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/Routine_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/orange_500"
+            android:backgroundTint="@color/orange_500"
+            android:text="Routine" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/Todo_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To-do" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/Rewards_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rewards" />
+    </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
