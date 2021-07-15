@@ -1,12 +1,20 @@
 package com.miniproject.productifylife;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +22,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class SettingsFragment extends Fragment {
+
+    Button logoutBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,6 +63,20 @@ public class SettingsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+    }
+    @Override
+    public void onViewCreated(View view,  Bundle savedInstanceState) {
+        logoutBtn = getView().findViewById(R.id.logout_btn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logout = new Intent(getContext(), AuthActivity.class);
+                startActivity(logout);
+                Toast.makeText(getContext(), "Successfully!! Sign out", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override

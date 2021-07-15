@@ -28,7 +28,7 @@ public class CalendarActivity extends AppCompatActivity {
             }
         });
 
-        passData = getIntent().getIntExtra(MainActivity.pass, 1);
+        passData = getIntent().getIntExtra(MainActivity.pass, 4);
         Toast.makeText(getBaseContext(), String.valueOf(passData), Toast.LENGTH_LONG).show();
     }
 }

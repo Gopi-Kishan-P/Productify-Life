@@ -42,11 +42,11 @@
                 android:id="@+id/coins_rem_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/orange_custom_border"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/logoutbutton"
+                app:layout_constraintEnd_toEndOf="@+id/appToolbar"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
@@ -82,18 +82,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_calendar"
                 style="@style/Selectable"
-                app:tint="@color/blue_500" />
-
-            <ImageButton
-                android:id="@+id/logoutbutton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_logout"
                 app:tint="@color/blue_500" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.productifylife.data.GlobalData;
@@ -38,11 +39,13 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     int currentFragment = 1;
     Dialog aboutDialog;
-    ImageButton calendarBtn, logoutBtn;
+    ImageButton calendarBtn;
+            Button logoutBtn;
+
     Button createRoutine;
 
     public static final String pass = "pass";
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -56,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(appToolbar);
         appToolbar.setTitle(R.string.routine);
 
-        logoutBtn = findViewById(R.id.logoutbutton);
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent logout = new Intent(MainActivity.this, AuthActivity.class);
-                startActivity(logout);
-                Toast.makeText(MainActivity.this, "Successfully!! Sign out", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        logoutBtn = findViewById(R.id.logout_btn);
+//        logoutBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent logout = new Intent(MainActivity.this, AuthActivity.class);
+//                startActivity(logout);
+//                Toast.makeText(MainActivity.this, "Successfully!! Sign out", Toast.LENGTH_SHORT).show();
+//            }
+//        });
         calendarBtn = findViewById(R.id.calendarButton);
         calendarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,20 +78,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        Fragment routineFragment = new RoutineFragment();
-        Fragment todoFragment = new TodoFragment();
-        Fragment rewardsFragment = new RewardsFragment();
-        Fragment settingsFragment = new SettingsFragment();
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        Fragment routineFragment= new RoutineFragment();
+        Fragment todoFragment=new TodoFragment();
+        Fragment rewardsFragment=new RewardsFragment();
+        Fragment settingsFragment=new SettingsFragment();
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (currentFragment) {
-                    case 1:
-                        aboutDialog.setContentView(R.layout.dialog_add_routine);
+                switch (currentFragment){
+                    case 1 :
+                            aboutDialog.setContentView(R.layout.dialog_add_routine);
                         Log.d("TRY", "Case 1");
                         aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         aboutDialog.show();
@@ -113,27 +115,25 @@ public class MainActivity extends AppCompatActivity {
                         aboutDialog.setContentView(R.layout.dialog_add_todo);
                         Log.d("TRY", "Case 1");
                         aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        aboutDialog.show();
-                        break;
-                    case 3:
-                        aboutDialog.setContentView(R.layout.dialog_add_reward);
+                            aboutDialog.show();
+                            break;
+                    case 3 :
+                            aboutDialog.setContentView(R.layout.dialog_add_reward);
                         Log.d("TRY", "Case 1");
                         aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        aboutDialog.show();
-                        break;
+                            aboutDialog.show();
+                            break;
 
-                    case 4:
+                    case 4 :
                         Log.d("TRY", "Case 4");
-                        aboutDialog.setContentView(R.layout.dialog_about);
-                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        aboutDialog.show();
-                        break;
+                            aboutDialog.setContentView(R.layout.dialog_about);
+                            aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            aboutDialog.show();
+                            break;
 
                 }
             }
         });
-
-
 
         getSupportFragmentManager().beginTransaction().add(R.id.flFragment, routineFragment, null).commit();
 
@@ -157,8 +157,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
                                 .replace(R.id.flFragment, todoFragment, null)
-                                .commit();
-                        break;
+                                .commit();  break;
                     case R.id.rewards:
                         currentFragment = 3;
                         appToolbar.setTitle(R.string.rewards);
@@ -176,6 +175,15 @@ public class MainActivity extends AppCompatActivity {
                                 .setReorderingAllowed(true)
                                 .replace(R.id.flFragment, settingsFragment, null)
                                 .commit();
+//                        logoutBtn = findViewById(R.id.logout_btn);
+//                        logoutBtn.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                Intent logout = new Intent(MainActivity.this, AuthActivity.class);
+//                                startActivity(logout);
+//                                Toast.makeText(MainActivity.this, "Successfully!! Sign out", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
                         break;
                 }
                 return true;
@@ -192,11 +200,19 @@ public class MainActivity extends AppCompatActivity {
                     .setShortLabel("Calendar")
                     .setLongLabel("Calendar")
                     .setIcon(Icon.createWithResource(this, R.mipmap.adaptive_calendar_icon))
-                    .setIntents(new Intent[]{
+                    .setIntents(new Intent[] {
                             main, cal
                     })
                     .build();
             sm.setDynamicShortcuts(Collections.singletonList(shortcut));
         }
+    }
+
+    public void logoutFunc(View view) {
+        Intent logout = new Intent(MainActivity.this, AuthActivity.class);
+        startActivity(logout);
+        finish();
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(MainActivity.this, "Log out Successful", Toast.LENGTH_SHORT).show();
     }
 }

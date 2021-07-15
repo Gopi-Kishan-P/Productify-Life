@@ -230,7 +230,7 @@ public class AuthActivity extends AppCompatActivity {
             tdoc.addOnCompleteListener(documentSnapshotTask -> {
 
                 GlobalData.cUser = UserModel.fromFirestore(documentSnapshotTask.getResult());
-                updateUI(firebaseUser);
+//                updateUI(firebaseUser);
 
 
             });
