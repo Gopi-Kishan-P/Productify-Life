@@ -30,6 +30,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.miniproject.productifylife.models.UserModel;
 
 import java.util.List;
 
@@ -163,6 +165,7 @@ public class AuthActivity extends AppCompatActivity {
         mAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
 //        Log.d(TAG,"mAuth value="+mAuth.toString());
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        Log.d("firestore","*******************came in firebase auth for  data to firestore");
 
         if(mAuth!=null)
             mAuth.signInWithCredential(credential)
@@ -173,16 +176,22 @@ public class AuthActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
 //                                Log.d(TAG, "signInWithCredential:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                UserModel userModel=new UserModel(user.getEmail(),user.getDisplayName(),user.getEmail(),user.getPhotoUrl().toString());
+                                FirebaseFirestore db=FirebaseFirestore.getInstance();
+                                db.collection("users").document(userModel.id).set(userModel.getMap());
+                                Log.d("firestore","****************added data to firestore");
                                 updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
 //                                Log.w(TAG, "signInWithCredential:failure", task.getException());
+                                Log.d("firestore","******************not added data to firestore");
+
                                 updateUI(null);
                             }
                         }
                     });
 //        else
-        updateUI(null);
+//        updateUI(null);
     }
 
 
