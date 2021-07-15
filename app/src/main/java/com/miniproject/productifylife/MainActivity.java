@@ -3,8 +3,7 @@ package com.miniproject.productifylife;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.content.pm.ShortcutInfoCompat;
-import androidx.core.content.pm.ShortcutManagerCompat;
+
 import androidx.fragment.app.Fragment;
 
 import android.app.Dialog;

@@ -42,7 +42,7 @@
                 android:id="@+id/coins_rem_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="12dp"
                 android:background="@drawable/orange_custom_border"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
