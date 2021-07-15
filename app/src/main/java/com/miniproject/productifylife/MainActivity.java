@@ -1,11 +1,5 @@
 package com.miniproject.productifylife;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
-import androidx.fragment.app.Fragment;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ShortcutInfo;
@@ -17,15 +11,26 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.miniproject.productifylife.data.GlobalData;
+import com.miniproject.productifylife.models.RoutineModel;
+import com.miniproject.productifylife.models.UserModel;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
     int currentFragment = 1;
     Dialog aboutDialog;
     ImageButton calendarBtn, logoutBtn;
-    
+    Button createRoutine;
+
     public static final String pass = "pass";
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -69,46 +75,65 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
-        Fragment routineFragment= new RoutineFragment();
-        Fragment todoFragment=new TodoFragment();
-        Fragment rewardsFragment=new RewardsFragment();
-        Fragment settingsFragment=new SettingsFragment();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        Fragment routineFragment = new RoutineFragment();
+        Fragment todoFragment = new TodoFragment();
+        Fragment rewardsFragment = new RewardsFragment();
+        Fragment settingsFragment = new SettingsFragment();
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (currentFragment){
-                    case 1 :
-                            aboutDialog.setContentView(R.layout.dialog_add_routine);
+                switch (currentFragment) {
+                    case 1:
+                        aboutDialog.setContentView(R.layout.dialog_add_routine);
                         Log.d("TRY", "Case 1");
                         aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            aboutDialog.show();
-                            break;
-                    case 2 :
-                            aboutDialog.setContentView(R.layout.dialog_add_todo);
-                        Log.d("TRY", "Case 1");
-                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            aboutDialog.show();
-                            break;
-                    case 3 :
-                            aboutDialog.setContentView(R.layout.dialog_add_reward);
-                        Log.d("TRY", "Case 1");
-                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            aboutDialog.show();
-                            break;
+                        aboutDialog.show();
+                        createRoutine=aboutDialog.findViewById(R.id.routine_create_task_btn);
+                        createRoutine.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                CollectionReference ref= FirebaseFirestore.getInstance().collection("userRoutine");
+                                TextInputLayout name=aboutDialog.findViewById(R.id.routine_edittext);
+                                EditText coins=aboutDialog.findViewById(R.id.add_routine_coins);
+                                String rname=name.getEditText().getText().toString();
+                                String rcoins=coins.getText().toString();
+                                UserModel userModel=GlobalData.cUser;
+                                RoutineModel routineModel=new RoutineModel((userModel.id+"_"+rname).replaceAll("\\s+", "_").toLowerCase(),rname,userModel.email,"","0",rcoins);
+                                ref.document(routineModel.id).set(routineModel.getMap());
+                                Log.d("createRoutine","***************added routine");
+                            }
+                        });
 
-                    case 4 :
+                        break;
+                    case 2:
+                        aboutDialog.setContentView(R.layout.dialog_add_todo);
+                        Log.d("TRY", "Case 1");
+                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        aboutDialog.show();
+                        break;
+                    case 3:
+                        aboutDialog.setContentView(R.layout.dialog_add_reward);
+                        Log.d("TRY", "Case 1");
+                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        aboutDialog.show();
+                        break;
+
+                    case 4:
                         Log.d("TRY", "Case 4");
-                            aboutDialog.setContentView(R.layout.dialog_about);
-                            aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            aboutDialog.show();
-                            break;
+                        aboutDialog.setContentView(R.layout.dialog_about);
+                        aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        aboutDialog.show();
+                        break;
 
                 }
             }
         });
+
+
 
         getSupportFragmentManager().beginTransaction().add(R.id.flFragment, routineFragment, null).commit();
 
@@ -132,7 +157,8 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction()
                                 .setReorderingAllowed(true)
                                 .replace(R.id.flFragment, todoFragment, null)
-                                .commit();  break;
+                                .commit();
+                        break;
                     case R.id.rewards:
                         currentFragment = 3;
                         appToolbar.setTitle(R.string.rewards);
@@ -166,10 +192,11 @@ public class MainActivity extends AppCompatActivity {
                     .setShortLabel("Calendar")
                     .setLongLabel("Calendar")
                     .setIcon(Icon.createWithResource(this, R.mipmap.adaptive_calendar_icon))
-                    .setIntents(new Intent[] {
+                    .setIntents(new Intent[]{
                             main, cal
                     })
                     .build();
             sm.setDynamicShortcuts(Collections.singletonList(shortcut));
         }
-}}
+    }
+}

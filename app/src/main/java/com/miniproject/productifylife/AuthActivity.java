@@ -1,10 +1,5 @@
 package com.miniproject.productifylife;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.cardview.widget.CardView;
-import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,8 +9,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-//import com.google.android.gms.auth.api.signin.GoogleSignIn;
-//import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.cardview.widget.CardView;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,24 +29,29 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.miniproject.productifylife.data.GlobalData;
 import com.miniproject.productifylife.models.UserModel;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AuthActivity extends AppCompatActivity {
     TabLayout tablayout;
     ViewPager viewPager;
     CardView google;
     float v = 0;
-
+    FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
+    CollectionReference userCollection;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_auth);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -60,6 +64,10 @@ public class AuthActivity extends AppCompatActivity {
         tablayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
         google = findViewById(R.id.continue_with_google);
+//        init();
+
+
+        init();
 
         google.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +80,6 @@ public class AuthActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         tablayout.addTab(tablayout.newTab().setText("Login"));
@@ -92,9 +99,9 @@ public class AuthActivity extends AppCompatActivity {
                     System.err.println("****************" + viewPager.getCurrentItem());
                     System.err.println("****************" + tab.getPosition());
 
-                }catch(Exception e){
+                } catch (Exception e) {
                     System.err.println(e);
-                    }
+                }
 
             }
 
@@ -109,7 +116,8 @@ public class AuthActivity extends AppCompatActivity {
             }
         });
     }
-    public void googleSignIn(){
+
+    public void googleSignIn() {
         final String TAG = "GoogleActivity";
         final int RC_SIGN_IN = 9001;
 
@@ -136,6 +144,7 @@ public class AuthActivity extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -156,18 +165,14 @@ public class AuthActivity extends AppCompatActivity {
             }
         }
     }
-    private void firebaseAuthWithGoogle(String idToken) {
-        FirebaseApp.initializeApp(this);
-        List<FirebaseApp> firebaseApps=FirebaseApp.getApps(this);
-//        Log.d(TAG,""+firebaseApps.toString());
-        FirebaseAuth mAuth;
 
-        mAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
+    private void firebaseAuthWithGoogle(String idToken) {
+
 //        Log.d(TAG,"mAuth value="+mAuth.toString());
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        Log.d("firestore","*******************came in firebase auth for  data to firestore");
+        Log.d("firestore", "*******************came in firebase auth for  data to firestore");
 
-        if(mAuth!=null)
+        if (mAuth != null)
             mAuth.signInWithCredential(credential)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -176,15 +181,15 @@ public class AuthActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
 //                                Log.d(TAG, "signInWithCredential:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                UserModel userModel=new UserModel(user.getEmail(),user.getDisplayName(),user.getEmail(),user.getPhotoUrl().toString());
-                                FirebaseFirestore db=FirebaseFirestore.getInstance();
+                                UserModel userModel = new UserModel(user.getEmail(), user.getDisplayName(), user.getEmail(), user.getPhotoUrl().toString());
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 db.collection("users").document(userModel.id).set(userModel.getMap());
-                                Log.d("firestore","****************added data to firestore");
+                                Log.d("firestore", "****************added data to firestore");
                                 updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
 //                                Log.w(TAG, "signInWithCredential:failure", task.getException());
-                                Log.d("firestore","******************not added data to firestore");
+                                Log.d("firestore", "******************not added data to firestore");
 
                                 updateUI(null);
                             }
@@ -196,6 +201,10 @@ public class AuthActivity extends AppCompatActivity {
 
 
     private void updateUI(FirebaseUser user) {
+//        FirebaseFirestore db=FirebaseFirestore.getInstance();
+//        db.collection("users").document(userModel.id).set(userModel.getMap());
+//        Log.d("firestore","****************added data to firestore");
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
@@ -205,5 +214,29 @@ public class AuthActivity extends AppCompatActivity {
             String personEmail = account.getEmail();
             Toast.makeText(this, "Welcome! " + personName, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void init() {
+        Log.d("init", "*******************came in init");
+        FirebaseApp.initializeApp(this);
+        userCollection = FirebaseFirestore.getInstance().collection("users");
+        List<FirebaseApp> firebaseApps = FirebaseApp.getApps(this);
+        Log.d("Init", "" + firebaseApps.toString());
+        mAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+
+        if (firebaseUser != null) {
+            Task<DocumentSnapshot> tdoc = userCollection.document(Objects.requireNonNull(firebaseUser.getEmail())).get();
+            tdoc.addOnCompleteListener(documentSnapshotTask -> {
+
+                GlobalData.cUser = UserModel.fromFirestore(documentSnapshotTask.getResult());
+                updateUI(firebaseUser);
+
+
+            });
+
+
+        }
+
     }
 }
