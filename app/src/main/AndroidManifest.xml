@@ -10,22 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProductifyLife"
-        tools:ignore="AllowBackup"
-        >
-<!--        <service android:name="com.google.firebase.components.ComponentDiscoveryService">-->
-<!--        <meta-data-->
-<!--            android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"-->
-<!--            android:value="com.google.firebase.components.ComponentRegistrar" />-->
-<!--        </service>-->
-
+        tools:ignore="AllowBackup">
         <activity android:name=".CalendarActivity" />
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".GoogleSignInActivity"/>
+        <!-- <service android:name="com.google.firebase.components.ComponentDiscoveryService"> -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar" -->
+        <!-- android:value="com.google.firebase.components.ComponentRegistrar" /> -->
+        <!-- </service> -->
+        <activity android:name=".MainActivity" />
+        <activity android:name=".GoogleSignInActivity" />
         <activity
             android:name=".AuthActivity"
             android:theme="@style/Theme.splashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,9 +32,13 @@
             android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <meta-data android:name="com.google.android.gms.version"
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <service
+            android:name=".GoogleSignInService"
+            android:exported="false"></service>
     </application>
 
 </manifest>
