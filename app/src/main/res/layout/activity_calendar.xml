@@ -30,6 +30,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                style="@style/Selectable"
                 app:titleTextColor="@color/blue_500">
 
             </androidx.appcompat.widget.Toolbar>
@@ -38,49 +39,58 @@
                 android:id="@+id/cal_back_btn"
                 android:layout_width="33dp"
                 android:layout_height="34dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="8dp"
                 android:background="@android:color/transparent"
-                android:contentDescription="TODO"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_arrow_back"
+                style="@style/Selectable"
                 app:tint="@color/blue_500" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/calendar"
+                android:textColor="@color/blue_500"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cal_back_btn"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myAppBar" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/cal_tablayout"
-        android:layout_width="400dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/viewpage_shape"
-        android:backgroundTint="@color/orange_500"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/blue_custom_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:tabRippleColor="@color/blue_50"
         app:tabIndicatorColor="@color/blue_500"
-        app:tabSelectedTextColor="@color/white"
+        app:tabSelectedTextColor="@color/blue_500"
         app:tabTextColor="@color/blue_500">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/Routine_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/orange_500"
-            android:backgroundTint="@color/orange_500"
+
             android:text="Routine" />
 
         <com.google.android.material.tabs.TabItem
@@ -94,6 +104,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rewards" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/All_Item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All" />
     </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
