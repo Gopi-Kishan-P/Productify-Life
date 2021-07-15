@@ -23,7 +23,7 @@ import java.util.Objects;
  */
 public class SettingsFragment extends Fragment {
 
-    Button logout_btn;
+    Button logoutBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,6 +63,20 @@ public class SettingsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+    }
+    @Override
+    public void onViewCreated(View view,  Bundle savedInstanceState) {
+        logoutBtn = getView().findViewById(R.id.logout_btn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logout = new Intent(getContext(), AuthActivity.class);
+                startActivity(logout);
+                Toast.makeText(getContext(), "Successfully!! Sign out", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
