@@ -45,7 +45,7 @@ import com.miniproject.productifylife.models.UserModel;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class MainActivity extends AppCompatActivity {
+public class    MainActivity extends AppCompatActivity {
     Toolbar appToolbar;
     FloatingActionButton fab;
     int currentFragment = 1;
