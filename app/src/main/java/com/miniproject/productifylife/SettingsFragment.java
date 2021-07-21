@@ -1,8 +1,12 @@
 package com.miniproject.productifylife;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -10,10 +14,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 /**
@@ -34,19 +47,19 @@ public class SettingsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    RadioGroup themeRadioGroup;
+    RadioButton lightThemeRadioBtn;
+    RadioButton darkThemeRadioBtn;
+    RadioButton autoThemeRadioBtn;
+    SwitchMaterial notifySwitch;
+    TextView notifyMeAtTextView;
+    TextView notifyMeAtTime;
+
+    Boolean showNotification = false;
+
     public SettingsFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SettingsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SettingsFragment newInstance(String param1, String param2) {
         SettingsFragment fragment = new SettingsFragment();
         Bundle args = new Bundle();
@@ -82,7 +95,95 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        themeRadioGroup = view.findViewById(R.id.themeRadioGroup);
+        lightThemeRadioBtn = view.findViewById(R.id.lightThemeRadioBtn);
+        darkThemeRadioBtn = view.findViewById(R.id.darkThemeRadioBtn);
+        autoThemeRadioBtn = view.findViewById(R.id.autoThemeRadioBtn);
+        notifySwitch = view.findViewById(R.id.notifySwitch);
+        notifyMeAtTextView = view.findViewById(R.id.notifyMeAtTextView);
+        notifyMeAtTime= view.findViewById(R.id.notifyMeAtTime);
+
+        lightThemeRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeTheme("light");
+            }
+        });
+        darkThemeRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeTheme("dark");
+            }
+        });
+        autoThemeRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeTheme("auto");
+            }
+        });
+
+        notifySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                showNotification = b;
+                if(showNotification)
+                    enableNotifications();
+                else
+                    disableNotifications();
+            }
+        });
+
+        notifyMeAtTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
+                        .setTitleText("Set Time For Notification")
+                        .build();
+                timePicker.show(getActivity().getSupportFragmentManager(),"notifyChannelId");
+
+                timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int hour = timePicker.getHour();
+                        int minute = timePicker.getMinute();
+                        String time = "";
+                        if(hour > 12)
+                            time =  String.format("%02d", (hour -12)) + ":" + String.format("%02d", minute) + " pm";
+                        else
+                            time =  String.format("%02d", hour) + ":" + String.format("%02d", minute) + " am";
+                        notifyMeAtTime.setText(time);
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.HOUR_OF_DAY, hour);
+                        calendar.set(Calendar.MINUTE, minute);
+                        calendar.set(Calendar.SECOND, 0);
+                        calendar.set(Calendar.MILLISECOND, 0);
+
+                        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                        Intent intent = new Intent(getContext(), DisplayNotification.class);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent,0);
+                        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);
+                    }
+                });
+            }
+        });
+
+        return view;
+    }
+
+    void disableNotifications(){
+        notifyMeAtTextView.setVisibility(View.GONE);
+        notifyMeAtTime.setVisibility(View.GONE);
+    }
+    void enableNotifications(){
+        notifyMeAtTextView.setVisibility(View.VISIBLE);
+        notifyMeAtTime.setVisibility(View.VISIBLE);
+
+
+    }
+
+    void changeTheme(String theme){
+        Toast.makeText(getContext(), theme, Toast.LENGTH_SHORT).show();
     }
 }

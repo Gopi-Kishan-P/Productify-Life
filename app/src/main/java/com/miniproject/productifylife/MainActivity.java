@@ -1,12 +1,22 @@
 package com.miniproject.productifylife;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import androidx.fragment.app.Fragment;
+
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Icon;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -32,6 +42,7 @@ import com.miniproject.productifylife.data.GlobalData;
 import com.miniproject.productifylife.models.RoutineModel;
 import com.miniproject.productifylife.models.UserModel;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,13 +56,16 @@ public class MainActivity extends AppCompatActivity {
     Button createRoutine;
 
     public static final String pass = "pass";
-    
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_ProductifyLife);
         setContentView(R.layout.activity_main);
+
+        createNotificationChannel();
 
         aboutDialog = new Dialog(this);
 
@@ -207,6 +221,22 @@ public class MainActivity extends AppCompatActivity {
             sm.setDynamicShortcuts(Collections.singletonList(shortcut));
         }
     }
+
+    private void createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "taskAddRemainder";
+            String description = "Add Tomorrow's To-Do Task";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel notificationChannel = new NotificationChannel("notifyChannelId", name, importance);
+            notificationChannel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(notificationChannel);
+
+        }
+    }
+
+
 
     public void logoutFunc(View view) {
         Intent logout = new Intent(MainActivity.this, AuthActivity.class);
