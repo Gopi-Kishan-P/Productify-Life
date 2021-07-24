@@ -205,7 +205,7 @@ public class AuthActivity extends AppCompatActivity {
 //        db.collection("users").document(userModel.id).set(userModel.getMap());
 //        Log.d("firestore","****************added data to firestore");
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, NavigateAuthMainScreen.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());

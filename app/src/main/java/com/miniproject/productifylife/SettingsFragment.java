@@ -55,6 +55,7 @@ public class SettingsFragment extends Fragment {
     SwitchMaterial notifySwitch;
     TextView notifyMeAtTextView;
     TextView notifyMeAtTime;
+    TextView themeHead;
 
     Boolean showNotification = false;
 
@@ -85,9 +86,11 @@ public class SettingsFragment extends Fragment {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent logout = new Intent(getContext(), AuthActivity.class);
-                startActivity(logout);
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getContext(), NavigateAuthMainScreen.class);
+                startActivity(intent);
                 Toast.makeText(getContext(), "Successfully!! Sign out", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
             }
         });
 
@@ -105,6 +108,11 @@ public class SettingsFragment extends Fragment {
         notifySwitch = view.findViewById(R.id.notifySwitch);
         notifyMeAtTextView = view.findViewById(R.id.notifyMeAtTextView);
         notifyMeAtTime= view.findViewById(R.id.notifyMeAtTime);
+        themeHead= view.findViewById(R.id.themeHead);
+
+        themeRadioGroup.setVisibility(View.GONE);
+        themeHead.setVisibility(View.GONE);
+
 
         lightThemeRadioBtn.setOnClickListener(new View.OnClickListener() {
             @Override

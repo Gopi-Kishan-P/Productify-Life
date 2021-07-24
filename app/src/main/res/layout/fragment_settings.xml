@@ -157,7 +157,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/themeHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -226,7 +226,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView16">
+            app:layout_constraintTop_toBottomOf="@+id/themeHead">
 
 
             <RadioButton
@@ -237,8 +237,8 @@
                 android:text="Light Theme"
                 android:checked="true"
                 android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                app:layout_constraintStart_toStartOf="@+id/themeHead"
+                app:layout_constraintTop_toBottomOf="@+id/themeHead" />
 
             <RadioButton
                 android:id="@+id/darkThemeRadioBtn"
@@ -246,7 +246,7 @@
                 android:layout_height="wrap_content"
                 android:text="Dark Theme"
                 android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
+                app:layout_constraintStart_toStartOf="@+id/themeHead"
                 app:layout_constraintTop_toBottomOf="@+id/radioButton" />
 
             <RadioButton
@@ -255,7 +255,7 @@
                 android:layout_height="wrap_content"
                 android:text="System Theme (Auto)"
                 android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
+                app:layout_constraintStart_toStartOf="@+id/themeHead"
                 app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
         </RadioGroup>
 

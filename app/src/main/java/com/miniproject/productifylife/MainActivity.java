@@ -45,7 +45,7 @@ import com.miniproject.productifylife.models.UserModel;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class    MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     Toolbar appToolbar;
     FloatingActionButton fab;
     int currentFragment = 1;
@@ -238,11 +238,9 @@ public class    MainActivity extends AppCompatActivity {
 
 
 
-    public void logoutFunc(View view) {
-        Intent logout = new Intent(MainActivity.this, AuthActivity.class);
-        startActivity(logout);
-        finish();
-        FirebaseAuth.getInstance().signOut();
-        Toast.makeText(MainActivity.this, "Log out Successful", Toast.LENGTH_SHORT).show();
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
     }
 }

@@ -11,6 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProductifyLife"
         tools:ignore="AllowBackup">
+        <activity android:name=".NavigateAuthMainScreen"
+            android:theme="@style/Theme.splashScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".CalendarActivity" />
         <!-- <service android:name="com.google.firebase.components.ComponentDiscoveryService"> -->
         <!-- <meta-data -->
@@ -21,25 +29,22 @@
         <activity android:name=".GoogleSignInActivity" />
         <activity
             android:name=".AuthActivity"
-            android:theme="@style/Theme.splashScreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:theme="@style/AuthScreenStyle">
         </activity>
         <activity
             android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <receiver android:name=".DisplayNotification"/>
+
+        <receiver android:name=".DisplayNotification" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <service
             android:name=".GoogleSignInService"
-            android:exported="false"></service>
+            android:exported="false" />
     </application>
 
 </manifest>
