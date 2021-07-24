@@ -126,14 +126,13 @@
             android:id="@+id/earnedTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="Remaining" />
+            android:text="Earned" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/spentTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Complete" />
+            android:text="Spent" />
     </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

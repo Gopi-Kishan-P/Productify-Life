@@ -16,5 +16,6 @@
     <color name="yellow_500">#FCD630</color>
     <color name="blue_500">#0077FF</color>
     <color name="blue_50">#75B6FF</color>
+    <color name="blue_10">#C4E0FF</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/blue_500</color>
 </resources>
