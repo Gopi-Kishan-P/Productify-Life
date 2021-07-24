@@ -1,20 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/item_number"
+        android:id="@+id/totalEarnedHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:text="Total Earned"
+        android:textColor="@color/blue_500"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/totalEarned"
+        app:layout_constraintEnd_toEndOf="@+id/totalEarned"
+        app:layout_constraintStart_toStartOf="@+id/totalEarned" />
 
     <TextView
-        android:id="@+id/content"
+        android:id="@+id/cc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
-</LinearLayout>
+        android:text="Coins"
+        android:textColor="@color/blue_500"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/totalEarned"
+        app:layout_constraintStart_toStartOf="@+id/totalEarned"
+        app:layout_constraintTop_toBottomOf="@+id/totalEarned" />
+
+    <TextView
+        android:id="@+id/cc2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coins"
+        android:textColor="@color/orange_700"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/totalSpent"
+        app:layout_constraintStart_toStartOf="@+id/totalSpent"
+        app:layout_constraintTop_toBottomOf="@+id/totalSpent" />
+
+    <TextView
+        android:id="@+id/totalSpentHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Spent"
+        android:textColor="@color/orange_700"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/totalSpent"
+        app:layout_constraintEnd_toEndOf="@+id/totalSpent"
+        app:layout_constraintStart_toStartOf="@+id/totalSpent" />
+
+    <TextView
+        android:id="@+id/totalEarned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="100"
+        android:textColor="@color/blue_500"
+        android:textSize="64dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/totalSpent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/totalSpent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="90"
+        android:textColor="@color/orange_700"
+        android:textSize="64dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/totalEarned"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:textColor="@color/blue_500"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/cc"
+        app:layout_constraintEnd_toStartOf="@+id/totalEarned"
+        app:layout_constraintTop_toBottomOf="@+id/totalEarnedHead"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:textColor="@color/orange_700"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/cc2"
+        app:layout_constraintEnd_toStartOf="@+id/totalSpent"
+        app:layout_constraintTop_toBottomOf="@+id/totalSpentHead"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/cal_tablayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/blue_custom_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cc"
+        app:tabGravity="fill"
+        app:tabIndicator="@drawable/button_shape"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorGravity="stretch"
+        app:tabMode="fixed"
+        app:tabRippleColor="@color/blue_50"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/blue_500">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/earnedTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Remaining" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/spentTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complete" />
+    </com.google.android.material.tabs.TabLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

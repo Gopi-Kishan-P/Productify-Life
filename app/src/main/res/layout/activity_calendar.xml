@@ -81,9 +81,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        app:tabIndicatorColor="@color/blue_500"
+        app:tabMode="fixed"
+        app:tabGravity="center"
+        app:tabIndicatorGravity="stretch"
         app:tabRippleColor="@color/blue_50"
-        app:tabSelectedTextColor="@color/orange_500"
+        app:tabIndicator="@drawable/button_shape"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicatorAnimationMode="elastic"
         app:tabTextColor="@color/blue_500">
 
         <com.google.android.material.tabs.TabItem

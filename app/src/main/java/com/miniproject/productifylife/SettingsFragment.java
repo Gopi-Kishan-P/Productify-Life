@@ -7,10 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +17,13 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -106,7 +101,7 @@ public class SettingsFragment extends Fragment {
         darkThemeRadioBtn = view.findViewById(R.id.darkThemeRadioBtn);
         autoThemeRadioBtn = view.findViewById(R.id.autoThemeRadioBtn);
         notifySwitch = view.findViewById(R.id.notifySwitch);
-        notifyMeAtTextView = view.findViewById(R.id.notifyMeAtTextView);
+        notifyMeAtTextView = view.findViewById(R.id.totalEarnedHead);
         notifyMeAtTime= view.findViewById(R.id.notifyMeAtTime);
         themeHead= view.findViewById(R.id.themeHead);
 

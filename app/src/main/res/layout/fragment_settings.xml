@@ -140,7 +140,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/notifyMeAtTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/totalEarnedHead" />
 
         <TextView
             android:id="@+id/textView13"
@@ -171,7 +171,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
         <TextView
-            android:id="@+id/notifyMeAtTextView"
+            android:id="@+id/totalEarnedHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -206,9 +206,9 @@
             android:textSize="20dp"
             android:textStyle="bold"
 
-            app:layout_constraintBottom_toBottomOf="@+id/notifyMeAtTextView"
+            app:layout_constraintBottom_toBottomOf="@+id/totalEarnedHead"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/notifyMeAtTextView" />
+            app:layout_constraintTop_toTopOf="@+id/totalEarnedHead" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/notifySwitch"
