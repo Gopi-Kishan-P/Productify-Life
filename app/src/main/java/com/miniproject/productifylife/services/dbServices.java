@@ -49,7 +49,7 @@ public class dbServices {
         CollectionReference ref = FirebaseFirestore.getInstance().collection("userRoutine");
 
         UserModel userModel = GlobalData.cUser;
-        RoutineModel routineModel = new RoutineModel((userModel.id + "_" + rName).replaceAll("\\s+", "_").toLowerCase(), rName, userModel.email, "", "0", rCoins, Timestamp.now(), false);
+        RoutineModel routineModel = new RoutineModel((userModel.id + "_" + rName).replaceAll("\\s+", "_").toLowerCase(), rName, userModel.img, userModel.id, "0", rCoins, Timestamp.now(), false);
         ref.document(routineModel.id).set(routineModel.getMap());
         Log.d("createRoutine", "***************added routine");
     }
@@ -58,7 +58,7 @@ public class dbServices {
         CollectionReference ref = FirebaseFirestore.getInstance().collection("userTodo");
 
         UserModel userModel = GlobalData.cUser;
-        TodoModel todoModel = new TodoModel((userModel.id + "_" + rName).replaceAll("\\s+", "_").toLowerCase(), rName, userModel.email, "", "0", rCoins, Timestamp.now(), false);
+        TodoModel todoModel = new TodoModel((userModel.id + "_" + rName).replaceAll("\\s+", "_").toLowerCase(), rName, userModel.img, userModel.id, "0", rCoins, Timestamp.now(), false);
         ref.document(todoModel.id).set(todoModel.getMap());
         Log.d("createdTodo", "***************added todo");
     }
