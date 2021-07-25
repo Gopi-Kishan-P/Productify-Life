@@ -6,7 +6,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RoutineModel {
+public class TodoModel {
     public String id;
     public String name;
     public String img;
@@ -16,7 +16,7 @@ public class RoutineModel {
     public Timestamp timestamp;
     public boolean completed;
 
-    public RoutineModel(String id, String name, String img, String userId, String priority, String coins,Timestamp timestamp,boolean completed) {
+    public TodoModel(String id, String name, String img, String userId, String priority, String coins,Timestamp timestamp,boolean completed) {
         this.id = id;
         this.name = name;
         this.img = img;
@@ -27,10 +27,10 @@ public class RoutineModel {
         this.completed=completed;
     }
 
-    public static RoutineModel fromFirestore(DocumentSnapshot doc) {
+    public static TodoModel fromFirestore(DocumentSnapshot doc) {
         Map<String, Object> data = doc.getData();
         assert data != null;
-        return new RoutineModel(doc.getId(), doc.get("name").toString(), doc.get("img").toString(), doc.getString("userId"), doc.getString("priority"), doc.getString("coins"),doc.getTimestamp("timestamp"),doc.getBoolean("completed"));
+        return new TodoModel(doc.getId(), doc.get("name").toString(), doc.get("img").toString(), doc.getString("userId"), doc.getString("priority"), doc.getString("coins"),doc.getTimestamp("timestamp"),doc.getBoolean("completed"));
 
     }
 
