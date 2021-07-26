@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(appToolbar);
         appToolbar.setTitle(R.string.routine);
 
+
 //        logoutBtn = findViewById(R.id.logout_btn);
 //        logoutBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override

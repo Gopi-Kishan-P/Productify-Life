@@ -3,13 +3,13 @@ package com.miniproject.productifylife.services;
 import android.util.Log;
 
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.miniproject.productifylife.data.GlobalData;
 import com.miniproject.productifylife.models.RoutineModel;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class dbServices {
-    public static void fetchUser(){
+    public static void fetchUser() {
         Log.d("init", "*******************came in init");
 //        FirebaseApp.initializeApp(this);
         CollectionReference userCollection = FirebaseFirestore.getInstance().collection("users");
@@ -75,19 +75,11 @@ public class dbServices {
         return completed;
     }
 
-    public static List<RoutineModel> fetchUserIncompleteRoutines() {
-        List<RoutineModel> incomplete = new ArrayList<RoutineModel>();
-        QuerySnapshot documentSnapshot = FirebaseFirestore.getInstance().collection("userRoutines").whereEqualTo("completed", false).get().getResult();
-        assert documentSnapshot != null;
-        List<DocumentSnapshot> docs = documentSnapshot.getDocuments();
-        docs.forEach((doc) -> {
-            incomplete.add(RoutineModel.fromFirestore(doc));
-
-        });
-
-        return incomplete;
+    public static Query fetchUserIncompleteRoutines() {
+        return FirebaseFirestore.getInstance().collection("userRoutine").whereEqualTo("completed", false);
 
     }
+
     public static List<TodoModel> fetchUserCompletedTodo() {
         List<TodoModel> completed = new ArrayList<TodoModel>();
         QuerySnapshot documentSnapshot = FirebaseFirestore.getInstance().collection("userTodos").whereEqualTo("completed", true).get().getResult();
@@ -100,18 +92,9 @@ public class dbServices {
         return completed;
     }
 
-    public static List<TodoModel> fetchUserIncompleteTodo() {
-        List<TodoModel> incomplete = new ArrayList<TodoModel>();
-        QuerySnapshot documentSnapshot = FirebaseFirestore.getInstance().collection("userTodos").whereEqualTo("completed", false).get().getResult();
-        assert documentSnapshot != null;
-        List<DocumentSnapshot> docs = documentSnapshot.getDocuments();
-        docs.forEach((doc) -> {
-            incomplete.add(TodoModel.fromFirestore(doc));
-
-        });
-
-        return incomplete;
-
+    public static Query fetchUserIncompleteTodo() {
+        return FirebaseFirestore.getInstance().collection("userTodo").whereEqualTo("completed", false);
     }
+
 
 }
