@@ -39,6 +39,7 @@
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/blue_500">
 
+
         <com.google.android.material.tabs.TabItem
             android:id="@+id/earnedTab"
             android:layout_width="wrap_content"
@@ -65,4 +66,19 @@
         app:layout_constraintStart_toStartOf="@+id/circularProgressIndicatorRoutine"
         app:layout_constraintTop_toTopOf="@+id/circularProgressIndicatorRoutine" />
 
+
+    <fragment
+        android:id="@+id/fragmentListRoutine"
+        android:name="com.miniproject.productifylife.MyListFragmentRoutine"
+        android:layout_width="300dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cal_tablayout"
+        app:layout_constraintEnd_toEndOf="@+id/cal_tablayout"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="@+id/cal_tablayout"
+        app:layout_constraintTop_toTopOf="@+id/cal_tablayout"
+        app:layout_constraintVertical_bias="0.176" />
+
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>
