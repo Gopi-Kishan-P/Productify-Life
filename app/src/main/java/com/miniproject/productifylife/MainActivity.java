@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     Button logoutBtn;
 
     Button createRoutine;
+    Button createToDo;
+    Button addReward;
 
     public static final String pass = "pass";
 
@@ -104,14 +106,14 @@ public class MainActivity extends AppCompatActivity {
                                 String rname = name.getEditText().getText().toString();
                                 String rcoins = coins.getText().toString();
                                 dbServices.createRoutine(rname, rcoins);
-
+                                aboutDialog.dismiss();
                             }
                         });
 
                         break;
                     case 2:
                         aboutDialog.setContentView(R.layout.dialog_add_todo);
-                        Log.d("TRY", "Case 1");
+                        Log.d("TRY", "Case 2");
                         aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         aboutDialog.show();
                         createRoutine = aboutDialog.findViewById(R.id.routine_create_task_btn);
@@ -123,13 +125,13 @@ public class MainActivity extends AppCompatActivity {
                                 String rname = name.getEditText().getText().toString();
                                 String rcoins = coins.getText().toString();
                                 dbServices.createTodo(rname, rcoins);
-
+                                aboutDialog.dismiss();
                             }
                         });
                         break;
                     case 3:
                         aboutDialog.setContentView(R.layout.dialog_add_reward);
-                        Log.d("TRY", "Case 1");
+                        Log.d("TRY", "Case 3");
                         aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         aboutDialog.show();
                         break;
