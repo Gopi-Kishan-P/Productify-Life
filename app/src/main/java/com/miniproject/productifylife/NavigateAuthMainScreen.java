@@ -24,6 +24,5 @@ public class NavigateAuthMainScreen extends AppCompatActivity {
 
         startActivity(i);
         finish();
-
     }
 }

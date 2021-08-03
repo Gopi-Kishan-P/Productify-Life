@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/College/6th sem/18CSMP68 Mobile Development Lab/Mini Project/Productify Life/app/src/main/res/layout/activity_auth.xml" value="0.1" />
+        <entry key="..\:/College/6th sem/18CSMP68 Mobile Development Lab/Mini Project/Productify Life/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/College/6th sem/18CSMP68 Mobile Development Lab/Mini Project/Productify Life/app/src/main/res/layout/fragment_routine.xml" value="0.22592592592592592" />
+        <entry key="..\:/College/6th sem/18CSMP68 Mobile Development Lab/Mini Project/Productify Life/app/src/main/res/layout/fragment_routine_list.xml" value="0.1102077687443541" />
+        <entry key="..\:/College/6th sem/18CSMP68 Mobile Development Lab/Mini Project/Productify Life/app/src/main/res/layout/fragment_signup.xml" value="0.1102077687443541" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectPlainTextFileTypeManager">
     <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" />
   </component>

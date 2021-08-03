@@ -21,7 +21,7 @@ public class UserModel {
     public static UserModel fromFirestore(DocumentSnapshot doc) {
         Map<String, Object> data = doc.getData();
         assert data != null;
-        return new UserModel(doc.getId(), doc.get("name").toString(), doc.get("email").toString(), doc.get("img").toString()    );
+        return new UserModel(doc.getId(), doc.get("name").toString(), doc.get("email").toString(), doc.get("img").toString());
 
     }
 

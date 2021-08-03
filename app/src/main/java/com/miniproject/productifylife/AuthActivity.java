@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,6 +47,8 @@ public class AuthActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     CollectionReference userCollection;
+    Button logInBtn;
+    Button signUpBtn;
 
 
     @Override
@@ -64,7 +67,7 @@ public class AuthActivity extends AppCompatActivity {
         tablayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
         google = findViewById(R.id.continue_with_google);
-//        init();
+        init();
 
 
         init();
@@ -80,6 +83,7 @@ public class AuthActivity extends AppCompatActivity {
 
             }
         });
+
 
 
         tablayout.addTab(tablayout.newTab().setText("Login"));
@@ -205,11 +209,11 @@ public class AuthActivity extends AppCompatActivity {
 //        db.collection("users").document(userModel.id).set(userModel.getMap());
 //        Log.d("firestore","****************added data to firestore");
 
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        if (account != null) {
         Intent intent = new Intent(this, NavigateAuthMainScreen.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (account != null) {
             String personName = account.getDisplayName();
             String personEmail = account.getEmail();
             Toast.makeText(this, "Welcome! " + personName, Toast.LENGTH_LONG).show();
@@ -231,8 +235,6 @@ public class AuthActivity extends AppCompatActivity {
 
                 GlobalData.cUser = UserModel.fromFirestore(documentSnapshotTask.getResult());
 //                updateUI(firebaseUser);
-
-
             });
 
 
