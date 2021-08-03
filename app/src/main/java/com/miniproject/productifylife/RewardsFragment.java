@@ -7,17 +7,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
 import com.miniproject.productifylife.placeholder.PlaceholderContent;
 
 /**
  * A fragment representing a list of Items.
  */
 public class RewardsFragment extends Fragment {
+
+    TabLayout rewardsTabLayout;
+    ViewPager rewardsViewPager;
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -65,6 +70,42 @@ public class RewardsFragment extends Fragment {
 //            }
 //            recyclerView.setAdapter(new MyItemRecyclerViewAdapter3(PlaceholderContent.ITEMS));
 //        }
+
+        rewardsTabLayout = view.findViewById(R.id.rewards_tablayout);
+        rewardsViewPager = view.findViewById(R.id.rewards_viewpager);
+
+        rewardsTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
+        final RewardsAdapter routineAdapter = new RewardsAdapter(getContext(), getChildFragmentManager(), rewardsTabLayout.getTabCount());
+        rewardsViewPager.setAdapter(routineAdapter);
+        rewardsViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(rewardsTabLayout));
+
+        rewardsTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                try {
+                    rewardsViewPager.setCurrentItem(tab.getPosition());
+                    System.err.println("********************************tab selected");
+                    System.err.println("****************" + rewardsViewPager.getCurrentItem());
+                    System.err.println("****************" + tab.getPosition());
+
+                } catch (Exception e) {
+                    System.err.println(e);
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         return view;
     }
 }

@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/cal_tablayout"
+        android:id="@+id/routine_tablayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -39,16 +39,14 @@
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/blue_500">
 
-
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/earnedTab"
+            android:id="@+id/routineRemainingTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="Remaining" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/spentTab"
+            android:id="@+id/routineCompletedTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Completed" />
@@ -66,10 +64,8 @@
         app:layout_constraintStart_toStartOf="@+id/circularProgressIndicatorRoutine"
         app:layout_constraintTop_toTopOf="@+id/circularProgressIndicatorRoutine" />
 
-
-    <fragment
-        android:id="@+id/fragmentListRoutine"
-        android:name="com.miniproject.productifylife.MyListFragmentRoutine"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/routine_view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -79,7 +75,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cal_tablayout" />
+        app:layout_constraintTop_toBottomOf="@+id/routine_tablayout" />
 
-    />
 </androidx.constraintlayout.widget.ConstraintLayout>

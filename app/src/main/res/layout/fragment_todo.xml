@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/cal_tablayout"
+        android:id="@+id/todo_tablayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -65,9 +65,8 @@
         app:layout_constraintStart_toStartOf="@+id/circularProgressIndicatorTodo"
         app:layout_constraintTop_toTopOf="@+id/circularProgressIndicatorTodo" />
 
-    <fragment
-        android:id="@+id/fragmentListTodo"
-        class="com.miniproject.productifylife.MyListFragmentTodo"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/todo_viewpager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -77,8 +76,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cal_tablayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/todo_tablayout" />
+
 
     />
 </androidx.constraintlayout.widget.ConstraintLayout>

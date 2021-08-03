@@ -40,16 +40,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class AuthActivity extends AppCompatActivity {
-    TabLayout tablayout;
-    ViewPager viewPager;
+    TabLayout authTabLayout;
+    ViewPager authViewPager;
     CardView google;
     float v = 0;
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     CollectionReference userCollection;
-    Button logInBtn;
-    Button signUpBtn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +61,9 @@ public class AuthActivity extends AppCompatActivity {
 //            getWindow().getDecorView().getWindowInsetsController().setSystemBarsAppearance(0, APPEARANCE_LIGHT_STATUS_BARS);
         }
 
-        tablayout = findViewById(R.id.tab_layout);
-        viewPager = findViewById(R.id.view_pager);
+        authTabLayout = findViewById(R.id.auth_tab_layout);
+        authViewPager = findViewById(R.id.auth_view_pager);
         google = findViewById(R.id.continue_with_google);
-        init();
-
-
         init();
 
         google.setOnClickListener(new View.OnClickListener() {
@@ -84,23 +78,21 @@ public class AuthActivity extends AppCompatActivity {
             }
         });
 
+        authTabLayout.addTab(authTabLayout.newTab().setText("Login"));
+        authTabLayout.addTab(authTabLayout.newTab().setText("SignUp"));
+        authTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        final AuthAdapter adapter = new AuthAdapter(this, getSupportFragmentManager(), authTabLayout.getTabCount());
+        authViewPager.setAdapter(adapter);
+        authViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(authTabLayout));
 
-        tablayout.addTab(tablayout.newTab().setText("Login"));
-        tablayout.addTab(tablayout.newTab().setText("SignUp"));
-        tablayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final AuthAdapter adapter = new AuthAdapter(this, getSupportFragmentManager(), tablayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
-
-        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        authTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 try {
-                    viewPager.setCurrentItem(tab.getPosition());
+                    authViewPager.setCurrentItem(tab.getPosition());
                     System.err.println("********************************tab selected");
-                    System.err.println("****************" + viewPager.getCurrentItem());
+                    System.err.println("****************" + authViewPager.getCurrentItem());
                     System.err.println("****************" + tab.getPosition());
 
                 } catch (Exception e) {

@@ -8,12 +8,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
 import com.miniproject.productifylife.placeholder.PlaceholderContent;
 
 /**
@@ -21,6 +23,9 @@ import com.miniproject.productifylife.placeholder.PlaceholderContent;
  */
 public class TodoFragment extends Fragment {
     private static View view;
+
+    TabLayout todoTabLayout;
+    ViewPager todoViewPager;
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -66,6 +71,43 @@ public class TodoFragment extends Fragment {
         } catch (InflateException e) {
             /* map is already there, just return view as it is */
         }
+
+
+        todoTabLayout = view.findViewById(R.id.todo_tablayout);
+        todoViewPager = view.findViewById(R.id.todo_viewpager);
+
+        todoTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
+        final TodoAdapter routineAdapter = new TodoAdapter(getContext(), getChildFragmentManager(), todoTabLayout.getTabCount());
+        todoViewPager.setAdapter(routineAdapter);
+        todoViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(todoTabLayout));
+
+        todoTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                try {
+                    todoViewPager.setCurrentItem(tab.getPosition());
+                    System.err.println("********************************tab selected");
+                    System.err.println("****************" + todoViewPager.getCurrentItem());
+                    System.err.println("****************" + tab.getPosition());
+
+                } catch (Exception e) {
+                    System.err.println(e);
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         return view;
     }
 //    @Override
