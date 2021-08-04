@@ -77,7 +77,7 @@ public class LoginFragment extends Fragment {
                 email.setError(null);
                 password.setError(null);
                 String emailString = email.getEditText().getText().toString();
-                String passwordString = email.getEditText().getText().toString();
+                String passwordString = password.getEditText().getText().toString();
                 if(emailString.isEmpty()){
                     email.setError("Enter the Email");
                     return;
