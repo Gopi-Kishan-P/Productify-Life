@@ -76,7 +76,7 @@ public class dbServices {
     }
 
     public static Query fetchUserIncompleteRoutines() {
-        return FirebaseFirestore.getInstance().collection("userRoutine").whereEqualTo("completed", false);
+        return FirebaseFirestore.getInstance().collection("userRoutine").whereEqualTo("completed", false).orderBy("timestamp", Query.Direction.DESCENDING);
 
     }
 
@@ -93,7 +93,7 @@ public class dbServices {
     }
 
     public static Query fetchUserIncompleteTodo() {
-        return FirebaseFirestore.getInstance().collection("userTodo").whereEqualTo("completed", false);
+        return FirebaseFirestore.getInstance().collection("userTodo").whereEqualTo("completed", false).orderBy("timestamp", Query.Direction.DESCENDING);
     }
 
 

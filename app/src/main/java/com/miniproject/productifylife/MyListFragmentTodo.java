@@ -79,6 +79,7 @@ public class MyListFragmentTodo extends ListFragment implements OnItemClickListe
                     data.add(todoModel.name);
                     synchronized(adapter){
                         adapter.notifyDataSetChanged();
+                        adapter.notifyAll();
                     }
 
                 }

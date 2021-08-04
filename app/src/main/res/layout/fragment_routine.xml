@@ -77,4 +77,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/routine_tablayout" />
 
+
+    <fragment
+        android:id="@+id/fragmentListRoutine"
+        class="com.miniproject.productifylife.MyListFragmentRoutine"
+        android:layout_width="300dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintBottom_toBottomOf="@+id/routine_tablayout"
+        app:layout_constraintEnd_toEndOf="@+id/routine_tablayout"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="@+id/routine_tablayout"
+        app:layout_constraintTop_toTopOf="@+id/routine_tablayout"
+        app:layout_constraintVertical_bias="0.176" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
