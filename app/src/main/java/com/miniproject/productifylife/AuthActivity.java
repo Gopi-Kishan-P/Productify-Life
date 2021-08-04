@@ -35,6 +35,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.productifylife.data.GlobalData;
 import com.miniproject.productifylife.models.UserModel;
+import com.miniproject.productifylife.models.UserSettingsModel;
 
 import java.util.List;
 import java.util.Objects;
@@ -50,7 +51,7 @@ public class AuthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
@@ -180,6 +181,18 @@ public class AuthActivity extends AppCompatActivity {
                                 UserModel userModel = new UserModel(user.getEmail(), user.getDisplayName(), user.getEmail(), user.getPhotoUrl().toString());
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 db.collection("users").document(userModel.id).set(userModel.getMap());
+
+                                UserSettingsModel userSettingsModel = new UserSettingsModel(user.getEmail(),true, "20","00","3", "2", "5","3","l");
+                                    db.collection("userSettings").document(userSettingsModel.id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if(task.getResult().exists()){
+                                                System.err.println("EEE Exists");
+                                            }else{
+                                                db.collection("userSettings").document(userSettingsModel.id).set(userSettingsModel.getMap());
+                                            }
+                                        }
+                                    });
                                 Log.d("firestore", "****************added data to firestore");
                                 updateUI(user);
                             } else {

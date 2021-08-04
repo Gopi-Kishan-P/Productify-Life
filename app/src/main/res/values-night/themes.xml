@@ -77,18 +77,5 @@
         <item name="android:background">@drawable/blue_custom_border</item>
     </style>
 
-    <style name="Selectable">
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-        <item name="android:foreground">?android:attr/selectableItemBackground</item>
-    </style>
-
-    <!--    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">-->
-    <!--        <item name="android:textSize">12sp</item>-->
-    <!--    </style>-->
-
-    <!--    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">-->
-    <!--        <item name="android:textSize">14sp</item>-->
-    <!--    </style>-->
 
 </resources>

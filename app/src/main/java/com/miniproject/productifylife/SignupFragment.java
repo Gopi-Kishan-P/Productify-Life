@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.productifylife.models.UserModel;
+import com.miniproject.productifylife.models.UserSettingsModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -198,8 +200,10 @@ public class SignupFragment extends Fragment {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     UserModel userModel = new UserModel(user.getEmail(), nameString, user.getEmail(), "");
+                                    UserSettingsModel userSettingsModel = new UserSettingsModel(user.getEmail(),true, "20","00","3", "2", "5","3","l");
                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                                     db.collection("users").document(userModel.id).set(userModel.getMap());
+                                    db.collection("userSettings").document(userSettingsModel.id).set(userSettingsModel.getMap());
                                     Toast.makeText(getContext(),"Welcome! " + nameString, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getContext(), NavigateAuthMainScreen.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -43,12 +43,47 @@ public class MainActivity extends AppCompatActivity {
     Button createToDo;
     Button addReward;
 
+    Fragment routineFragment;
+    Fragment todoFragment;
+    Fragment rewardsFragment;
+    Fragment settingsFragment;
+
     public static final String pass = "pass";
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        switch (currentFragment){
+            case 1:
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.flFragment, routineFragment, null)
+                        .commit();
+                break;
+            case 2:
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.flFragment, todoFragment, null)
+                        .commit();
+                break;
+            case 3:
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.flFragment, rewardsFragment, null)
+                        .commit();
+                break;
+            case 4:
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.flFragment, settingsFragment, null)
+                        .commit();
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_ProductifyLife);
         setContentView(R.layout.activity_main);
@@ -82,10 +117,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        Fragment routineFragment = new RoutineFragment();
-        Fragment todoFragment = new TodoFragment();
-        Fragment rewardsFragment = new RewardsFragment();
-        Fragment settingsFragment = new SettingsFragment();
+        routineFragment = new RoutineFragment();
+        todoFragment = new TodoFragment();
+        rewardsFragment = new RewardsFragment();
+        settingsFragment = new SettingsFragment();
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "taskAddRemainder";
+            CharSequence name = "Task Add Remainder";
             String description = "Add Tomorrow's To-Do Task";
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel notificationChannel = new NotificationChannel("notifyChannelId", name, importance);
