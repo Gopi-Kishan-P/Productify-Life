@@ -8,11 +8,11 @@
 
     <ProgressBar
         android:id="@+id/circularProgressIndicatorRoutine"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_marginTop="8dp"
         android:indeterminateOnly="false"
-        android:progress="30"
+        android:progress="50"
         android:progressDrawable="@drawable/custom_circular_progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         android:id="@+id/routine_progress_percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30%"
+        android:text="50%"
         android:textColor="@color/blue_500"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/circularProgressIndicatorRoutine"
@@ -75,20 +75,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/routine_tablayout" />
-
-
-    <fragment
-        android:id="@+id/fragmentListRoutine"
-        class="com.miniproject.productifylife.MyListFragmentRoutine"
-        android:layout_width="300dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="200dp"
-        app:layout_constraintBottom_toBottomOf="@+id/routine_tablayout"
-        app:layout_constraintEnd_toEndOf="@+id/routine_tablayout"
-        app:layout_constraintHorizontal_bias="0.592"
-        app:layout_constraintStart_toStartOf="@+id/routine_tablayout"
-        app:layout_constraintTop_toTopOf="@+id/routine_tablayout"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintTop_toBottomOf="@+id/routine_tablayout"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

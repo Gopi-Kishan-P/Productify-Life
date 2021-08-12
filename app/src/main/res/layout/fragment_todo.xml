@@ -8,11 +8,11 @@
 
     <ProgressBar
         android:id="@+id/circularProgressIndicatorTodo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_marginTop="8dp"
         android:indeterminateOnly="false"
-        android:progress="30"
+        android:progress="33"
         android:progressDrawable="@drawable/custom_circular_progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
         android:id="@+id/todo_progress_percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30%"
+        android:text="33%"
         android:textColor="@color/blue_500"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/circularProgressIndicatorTodo"
@@ -76,23 +76,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/todo_tablayout" />
+        app:layout_constraintTop_toBottomOf="@+id/todo_tablayout"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
-    <fragment
-        android:id="@+id/fragmentListTodo"
-        class="com.miniproject.productifylife.MyListFragmentTodo"
-        android:layout_width="300dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="200dp"
-        app:layout_constraintBottom_toBottomOf="@+id/todo_tablayout"
-        app:layout_constraintEnd_toEndOf="@+id/todo_tablayout"
-        app:layout_constraintHorizontal_bias="0.592"
-        app:layout_constraintStart_toStartOf="@+id/todo_tablayout"
-        app:layout_constraintTop_toTopOf="@+id/todo_tablayout"
-        app:layout_constraintVertical_bias="0.176" />
-
-
-        />
-
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -70,7 +70,6 @@ public class dbServices {
         List<DocumentSnapshot> docs = documentSnapshot.getDocuments();
         docs.forEach((doc) -> {
             completed.add(RoutineModel.fromFirestore(doc));
-
         });
         return completed;
     }

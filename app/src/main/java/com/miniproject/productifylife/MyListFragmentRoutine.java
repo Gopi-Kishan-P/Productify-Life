@@ -30,6 +30,7 @@ import java.util.List;
 
 public class MyListFragmentRoutine extends ListFragment implements OnItemClickListener {
     private static View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,16 +50,16 @@ public class MyListFragmentRoutine extends ListFragment implements OnItemClickLi
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ArrayList data=new ArrayList<String>();
+        ArrayList data = new ArrayList<String>();
         data.add("do exercies");
         data.add("do hw");
-        ArrayAdapter adapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,data);
+        ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, data);
         setListAdapter(adapter);
         getListView().setOnItemClickListener(this);
 
         dbServices.fetchUserIncompleteRoutines()
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    String TAG="stream firestore*******************";
+                    String TAG = "stream firestore*******************";
 
 
                     @Override
@@ -72,10 +73,10 @@ public class MyListFragmentRoutine extends ListFragment implements OnItemClickLi
 
                         List<String> cities = new ArrayList<>();
                         for (QueryDocumentSnapshot doc : value) {
-                            DocumentSnapshot document=doc;
-                            RoutineModel routineModel=RoutineModel.fromFirestore(document);
+                            DocumentSnapshot document = doc;
+                            RoutineModel routineModel = RoutineModel.fromFirestore(document);
                             data.add(routineModel.name);
-                            synchronized(adapter){
+                            synchronized (adapter) {
                                 adapter.notifyDataSetChanged();
                             }
 
